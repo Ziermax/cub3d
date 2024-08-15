@@ -1,0 +1,12 @@
+.
+..
+.DS_Store
+a.out
+*.txt
+*.o
+*.d
+*.a
+*.swp
+*.swo
+test*
+cub3d
