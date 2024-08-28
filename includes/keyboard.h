@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   keyboard.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 19:29:43 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/28 20:12:14 by mvelazqu         ###   ########.fr       */
+/*   Created: 2024/08/28 16:08:27 by mvelazqu          #+#    #+#             */
+/*   Updated: 2024/08/28 18:29:25 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef KEYBOARD_H
+# define KEYBOARD_H
 
-# include "structs.h"
-
-void	split_image(t_mlx *mlx);
-/*	mlx functions related	*/
-void	data_init(t_data *data, t_mlx *mlx, t_img *img, t_map *map);
-int		destroy_event(t_data *data);
-int		key_event(int keycode, t_data *data);
-int		mouse_click_event(int keycode, int x_m, int y_m, t_data *data);
-int		mouse_move_event(int x, int y, t_data *data);
+# define KEY_ESC 65307
+# define KEY_PLUS 61
+# define KEY_MINUS 45
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_S 115
+# define KEY_W 119
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define MOUSE_CLICK 1
+# define MOUSE_ANTICLICK 3
+# define MOUSE_WHEELCLICK 2
+# define MOUSE_UP 4
+# define MOUSE_DOWN 5
 
 #endif
