@@ -10,3 +10,4 @@ a.out
 *.swo
 test*
 cub3d
+Makefile.gen
