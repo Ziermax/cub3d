@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:54:45 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/27 16:13:34 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/29 12:00:05 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,10 @@
 #include "../includes/structs.h"
 #include "../includes/mlx.h"
 
+void	null(void)
+{
+	int	i;
 
+	i = 0;
+	(void)i;
+}

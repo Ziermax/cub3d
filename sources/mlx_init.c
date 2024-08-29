@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:21:17 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/28 20:12:23 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/29 13:10:59 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,26 @@
 #include "../includes/cub3d.h"
 #include "../includes/structs.h"
 #include "../Libft/includes/libft.h"
+#include "../includes/color.h"
 #include <stdlib.h>
+//#include <stdio.h>
 
-void	data_init(t_data *data, t_mlx *mlx, t_img *img, t_map *map)
+void	map_init(t_map *map)
 {
-	ft_bzero(data, sizeof(t_data));
+	map->layout = (void *)1;
+//	map->ceiling = 0xD0FF;
+	map->ceiling = 0xFF;
+	map->ceiling_low = proportional_color(44 * COLOR_DEF / 100,
+			0x0, map->ceiling);
+//	map->floor = 0xFF00;
+	map->floor = 0xFF0000;
+	map->floor_low = proportional_color(44 * COLOR_DEF / 100,
+			0x0, map->floor);
+}
+
+void	ft_mlx_init(t_mlx *mlx, t_img *img)
+{
+	mlx->img = NULL;
 	mlx->ptr = mlx_init();
 	if (!mlx->ptr)
 		return ;
@@ -31,6 +46,17 @@ void	data_init(t_data *data, t_mlx *mlx, t_img *img, t_map *map)
 	img->addr = mlx_get_data_addr(img->ptr, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 	mlx->img = img;
+}
+
+void	data_init(t_data *data, t_mlx *mlx, t_img *img, t_map *map)
+{
+	data->mlx = NULL;
+	ft_mlx_init(mlx, img);
+	if (!mlx->img)
+		return ;
+	map_init(map);
+	if (!map->layout)
+		return ;
 	data->mlx = mlx;
 	data->map = map;
 	mlx_hook(mlx->win, 2, 1L, key_event, data);

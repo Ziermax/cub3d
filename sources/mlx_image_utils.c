@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:09:29 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/28 20:10:12 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/29 13:05:34 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	split_image(t_mlx *mlx)
+void	split_image(t_mlx *mlx, t_map *map)
 {
 	int	half_img;
 	int	color;
@@ -37,10 +37,10 @@ void	split_image(t_mlx *mlx)
 		x = 0;
 		if (y + half_img < HEIGTH)
 			color = proportional_color(y * COLOR_DEF / (HEIGTH - half_img),
-					0x00D0FF, 0x5C70);
+					map->ceiling, map->ceiling_low);
 		else
 			color = proportional_color((y - half_img) * COLOR_DEF
-					/ (HEIGTH - half_img), 0x7000, 0xFF00);
+					/ (HEIGTH - half_img), map->floor_low, map->floor);
 		while (x < LENGTH)
 			my_mlx_pixel_put(mlx->img, x++, y, color);
 		y++;

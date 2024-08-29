@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:47:23 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/28 20:11:33 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/29 13:05:34 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	data_init(&data, &mlx, &img, &map);
 	if (!data.mlx)
 		return (fd_printf(2, "Failed mlx_functions\n"));
-	split_image(data.mlx);
+	split_image(data.mlx, data.map);
 	mlx_loop(data.mlx->ptr);
 	fd_printf(1, "Finished Cub2d\n");
 	return (data.value);

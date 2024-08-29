@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:29:43 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/28 20:12:14 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/29 13:08:22 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "structs.h"
 
-void	split_image(t_mlx *mlx);
+void	split_image(t_mlx *mlx, t_map *map);
 /*	mlx functions related	*/
 void	data_init(t_data *data, t_mlx *mlx, t_img *img, t_map *map);
 int		destroy_event(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 20:55:27 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/28 20:11:13 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:35:56 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ typedef struct s_map
 	void	*img_south;
 	void	*img_west;
 	void	*img_east;
-	void	*ceiling;
-	void	*floor;
+	int		ceiling;
+	int		ceiling_low;
+	int		floor;
+	int		floor_low;
 	int		player[2];
 }	t_map;
 
