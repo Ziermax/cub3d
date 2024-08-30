@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 20:55:27 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/29 11:35:56 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/30 23:30:47 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,25 @@
 
 # define LENGTH 1920
 # define HEIGTH 1080
+# define X 0
+# define Y 1
+# define PX_THCKNSS 40
+
+typedef struct s_plyer
+{
+	float	x;
+	float	y;
+	int		ang;
+}	t_plyer;
+
+typedef struct s_column
+{
+	int		x;
+	int		height;
+	void	*texture;
+	int		x_txture;
+	int		y_txture;
+}	t_column;
 
 typedef struct s_map
 {
@@ -29,7 +48,7 @@ typedef struct s_map
 	int		ceiling_low;
 	int		floor;
 	int		floor_low;
-	int		player[2];
+	t_plyer	player;
 }	t_map;
 
 typedef struct s_img
@@ -54,5 +73,8 @@ typedef struct s_data
 	t_mlx	*mlx;
 	int		value;
 }	t_data;
+
+void	delete_map(void *map);
+void	delete_mlx(void *mlx);
 
 #endif

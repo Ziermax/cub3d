@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:29:43 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/29 13:08:22 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/30 23:33:46 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ int		destroy_event(t_data *data);
 int		key_event(int keycode, t_data *data);
 int		mouse_click_event(int keycode, int x_m, int y_m, t_data *data);
 int		mouse_move_event(int x, int y, t_data *data);
+void	draw_pixel(int x, int y, int color, t_mlx *mlx);
+void	draw_column(int x, int heigth, int color, t_mlx *mlx);
 
 #endif

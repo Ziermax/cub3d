@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   struct_destroy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 19:26:05 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/30 23:33:29 by mvelazqu         ###   ########.fr       */
+/*   Created: 2024/08/29 15:54:55 by mvelazqu          #+#    #+#             */
+/*   Updated: 2024/08/29 16:11:27 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include <stdlib.h>
+#include "../minilibx/mlx.h"
+#include "../includes/structs.h"
 
-# include "structs.h"
+void	delete_mlx(void *mlx)
+{
+	t_mlx	*aux;
 
-# define COLOR_DEF 500
+	if (!mlx)
+		return ;
+	aux = mlx;
+	mlx_destroy_image(aux->ptr, aux->img->ptr);
+	mlx_destroy_window(aux->ptr, aux->win);
+	mlx_destroy_display(aux->ptr);
+	free(aux->ptr);
+}
 
-int		proportional_color(int percentage, int min_color, int max_color);
-void	draw_pixel(int x, int y, int color, t_mlx *mlx);
+void	delete_map(void *map)
+{
+	t_map	*aux;
 
-#endif
+	if (!map)
+		return ;
+	aux = map;
+	free(aux->layout);
+}

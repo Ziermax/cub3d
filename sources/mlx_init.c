@@ -6,11 +6,11 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:21:17 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/29 13:10:59 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/30 21:36:40 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mlx.h"
+#include "../minilibx/mlx.h"
 #include "../includes/cub3d.h"
 #include "../includes/structs.h"
 #include "../Libft/includes/libft.h"
@@ -18,17 +18,44 @@
 #include <stdlib.h>
 //#include <stdio.h>
 
+char	**maping(void)
+{
+	char	**layout;
+
+	layout = NULL;
+	layout = add_dir(layout, "11111");
+	if (!layout)
+		return (NULL);
+	layout = add_dir(layout, "10001");
+	if (!layout)
+		return (NULL);
+	layout = add_dir(layout, "100S1");
+	if (!layout)
+		return (NULL);
+	layout = add_dir(layout, "10001");
+	if (!layout)
+		return (NULL);
+	layout = add_dir(layout, "11111");
+	if (!layout)
+		return (NULL);
+	return (layout);
+}
+
+	//map->ceiling = 0xC95200;
 void	map_init(t_map *map)
 {
-	map->layout = (void *)1;
-//	map->ceiling = 0xD0FF;
-	map->ceiling = 0xFF;
+	map->layout = maping();
+	if (!map->layout)
+		return ;
+	map->ceiling = 0xD0FF;
 	map->ceiling_low = proportional_color(44 * COLOR_DEF / 100,
 			0x0, map->ceiling);
-//	map->floor = 0xFF00;
-	map->floor = 0xFF0000;
+	map->floor = 0xFF00;
 	map->floor_low = proportional_color(44 * COLOR_DEF / 100,
 			0x0, map->floor);
+	map->player.x = 3;
+	map->player.y = 2;
+	map->player.ang = 0;
 }
 
 void	ft_mlx_init(t_mlx *mlx, t_img *img)
