@@ -6,13 +6,14 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:47:23 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/30 23:36:46 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/01 15:08:26 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minilibx/mlx.h"
 #include "../Libft/includes/libft.h"
 #include "../includes/cub3d.h"
+#include <math.h>
 
 int	main(int argc, char **argv)
 {

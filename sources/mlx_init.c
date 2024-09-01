@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:21:17 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/30 21:36:40 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/31 13:31:45 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ char	**maping(void)
 	layout = add_dir(layout, "11111");
 	if (!layout)
 		return (NULL);
-	layout = add_dir(layout, "10001");
-	if (!layout)
-		return (NULL);
-	layout = add_dir(layout, "100S1");
+	layout = add_dir(layout, "10011");
 	if (!layout)
 		return (NULL);
 	layout = add_dir(layout, "10001");
+	if (!layout)
+		return (NULL);
+	layout = add_dir(layout, "1N001");
 	if (!layout)
 		return (NULL);
 	layout = add_dir(layout, "11111");
@@ -41,7 +41,24 @@ char	**maping(void)
 	return (layout);
 }
 
-	//map->ceiling = 0xC95200;
+int	*fov_init(void)
+{
+	int	*fov;
+	int	i;
+
+	fov = NULL;
+	i = 0;
+	while (i * PX_THCKNSS < LENGTH)
+	{
+		i++;
+		fov = add_integer(fov, i, FOV % 360 * 1000 * i * PX_THCKNSS / LENGTH);
+	}
+	i = 0;
+	return (fov);
+}
+//	while (i * PX_THCKNSS < LENGTH)
+//		printf("Saved angle: %d\n", fov[i++]);
+
 void	map_init(t_map *map)
 {
 	map->layout = maping();
@@ -53,10 +70,12 @@ void	map_init(t_map *map)
 	map->floor = 0xFF00;
 	map->floor_low = proportional_color(44 * COLOR_DEF / 100,
 			0x0, map->floor);
-	map->player.x = 3;
-	map->player.y = 2;
-	map->player.ang = 0;
+	map->player.x = 1.f;
+	map->player.y = 3.f;
+	map->player.ang = 12345678;
+	map->player.fov = fov_init();
 }
+//	map->ceiling = 0xC95200;
 
 void	ft_mlx_init(t_mlx *mlx, t_img *img)
 {

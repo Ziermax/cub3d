@@ -12,7 +12,7 @@ LIBMLX = ./minilibx/libmlx.a
 
 SRC_F = main.c
 #	MAXI FILES
-SRC_F += drawing.c mlx_events.c mlx_image_utils.c mlx_init.c color.c struct_destroy.c
+SRC_F += drawing.c mlx_events.c mlx_image_utils.c mlx_init.c color.c struct_destroy.c casting.c
 #	CAMILA FILES
 SRC_F += 
 SRC_D = ./sources/

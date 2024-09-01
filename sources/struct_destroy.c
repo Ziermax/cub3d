@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:54:55 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/29 16:11:27 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/31 01:51:26 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void	delete_map(void *map)
 		return ;
 	aux = map;
 	free(aux->layout);
+	free(aux->player.fov);
 }
