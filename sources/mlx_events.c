@@ -6,23 +6,20 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:41:25 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/28 19:03:36 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:12:59 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mlx.h"
+#include <stdlib.h>
+#include "../minilibx/mlx.h"
 #include "../includes/structs.h"
 #include "../includes/keyboard.h"
-#include <stdlib.h>
-#include <stdio.h>
+//#include <stdio.h>
 
 int	destroy_event(t_data *data)
 {
-	mlx_destroy_image(data->mlx->ptr, data->mlx->img->ptr);
-	mlx_destroy_window(data->mlx->ptr, data->mlx->win);
-	mlx_destroy_display(data->mlx->ptr);
-	mlx_loop_end(data->mlx->ptr);
-	free(data->mlx->ptr);
+	delete_mlx(data->mlx);
+	delete_map(data->map);
 	exit(0);
 }
 

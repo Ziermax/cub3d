@@ -6,13 +6,14 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:47:23 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/28 20:11:33 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/01 15:08:26 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mlx.h"
+#include "../minilibx/mlx.h"
 #include "../Libft/includes/libft.h"
 #include "../includes/cub3d.h"
+#include <math.h>
 
 int	main(int argc, char **argv)
 {
@@ -28,7 +29,6 @@ int	main(int argc, char **argv)
 	data_init(&data, &mlx, &img, &map);
 	if (!data.mlx)
 		return (fd_printf(2, "Failed mlx_functions\n"));
-	split_image(data.mlx);
 	mlx_loop(data.mlx->ptr);
 	fd_printf(1, "Finished Cub2d\n");
 	return (data.value);
