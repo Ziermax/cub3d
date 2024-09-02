@@ -23,15 +23,15 @@ int	open_file(char *argv, int *fd)
 	return (*fd);
 }
 
-int	is_ocult(char *argv)
+int	file_is_ocult(char *argv)
 {
 	//int		i;
 	char	*checker;
 
-	checker = strrchr(argv, '/');
-	if (checker && strncmp(checker + 1, ".", 1) == 0)
+	checker = ft_strrchr(argv, '/');
+	if (checker && ft_strncmp(checker + 1, ".", 1) == 0)
 		return (-1);
-	if (!checker && strncmp(argv, ".", 1) == 0)
+	if (!checker && ft_strncmp(argv, ".", 1) == 0)
 		return (-1);
 	return (0);
 }
@@ -40,10 +40,10 @@ int	check_file(char *argv)
 {
 	int	i;
 
-	i = strlen(argv) - 4;
+	i = ft_strlen(argv) - 4;
 	if (i > 0)
 	{
-		if (is_ocult(argv) == 0 && strncmp(argv + i, ".cub", 4) == 0)
+		if (file_is_ocult(argv) == 0 && ft_strncmp(argv + i, ".cub", 4) == 0)
 			return (0);
 	}
 	return (-1);
@@ -57,9 +57,9 @@ int	main(int argc, char **argv)
 	{
 		//pon un error si un pelotudo te pasa un .cub a secas
 		if (check_file(argv[1]) == -1)
-			exit(printf("Error\nWrong file!\nOnly .cub please :)\nPS: We don't accept occulted files uwu\n"));
+			exit(fd_printf(2, "Error\nWrong file!\nOnly .cub please :)\nPS: We don't accept occulted files uwu\n"));
 		if (open_file(argv[1], &fd) == -1))
-			exit(printf("Error\nCouldn't open file :(\n Check if the path is correct and file has read permissions\n");
+			exit(fd_printf(2, "Error\nCouldn't open file :(\n Check if the path is correct and file has read permissions\n");
 		
 	}
 	else
