@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   mlx_event.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 19:26:05 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/30 23:33:29 by mvelazqu         ###   ########.fr       */
+/*   Created: 2024/09/12 13:23:06 by mvelazqu          #+#    #+#             */
+/*   Updated: 2024/09/13 17:22:33 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#ifndef MLX_EVENT_H
+# define MLX_EVENT_H
 
-# include "structs.h"
-
-# define COLOR_DEF 500
-
-int		proportional_color(int percentage, int min_color, int max_color);
-void	draw_pixel(int x, int y, int color, t_mlx *mlx);
+void	player_angle_key(int keycode, t_data *data);
+void	player_movement(int keycode, t_data *data);
+void	switch_mouse_state(t_data *data, int state);
 
 #endif

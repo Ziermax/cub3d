@@ -6,14 +6,12 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:54:45 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/30 23:28:58 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/13 18:00:25 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minilibx/mlx.h"
 #include "../Libft/includes/libft.h"
-#include "../includes/structs.h"
-#include "../includes/color.h"
 #include "../includes/drawing.h"
 
 void	draw_pixel(int x, int y, int color, t_mlx *mlx)
@@ -49,7 +47,7 @@ void	draw_column(int x, int heigth, int color, t_mlx *mlx)
 	if (heigth <= 0 || x < 0 || x * PX_THCKNSS > LENGTH + PX_THCKNSS)
 		return ;
 	half_screen = HEIGTH / PX_THCKNSS / 2;
-	if (heigth * 2 * PX_THCKNSS > HEIGTH + PX_THCKNSS)
+	if ((long)heigth * 2 * PX_THCKNSS > (long)HEIGTH + PX_THCKNSS)
 		heigth = HEIGTH / PX_THCKNSS / 2 + 2;
 	draw_pixel(x, half_screen, color, mlx);
 	column = 1;
