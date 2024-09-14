@@ -1,8 +1,8 @@
 #<-------------------------------|VARIABLES|---------------------------------->#
 
-NAME = cub3d
+NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 MLXFLAGS = -lXext -lX11 -lm -lz
 
 #<---------------------------------|FILES|------------------------------------>#
