@@ -6,14 +6,13 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:09:29 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/30 23:32:55 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/13 18:03:01 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minilibx/mlx.h"
-#include "../includes/structs.h"
 #include "../includes/cub3d.h"
-#include "../includes/color.h"
+#include "../includes/drawing.h"
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
@@ -45,4 +44,24 @@ void	split_image(t_mlx *mlx, t_map *map)
 			draw_pixel(x++, y, color, mlx);
 		y++;
 	}
+}
+
+int	render_image(t_data *data)
+{
+	t_column	column;
+	t_mlx		*mlx;
+	t_map		*map;
+	int			i;
+
+	mlx = data->mlx;
+	map = data->map;
+	i = 0;
+	split_image(mlx, map);
+	while (i * PX_THCKNSS < LENGTH)
+	{
+		column = distance_to_wall(map, map->player.fov[i] + map->player.ang);
+		draw_column(i++, column.height, 0xff9f5d, mlx);
+	}
+	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img->ptr, 0, 0);
+	return (0);
 }

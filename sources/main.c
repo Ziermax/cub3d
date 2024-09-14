@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:47:23 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/09/14 18:15:44 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/14 18:27:07 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,32 @@
 #include "../Libft/includes/libft.h"
 #include "../includes/cub3d.h"
 #include "../includes/parser.h"
-#include <math.h>
+#include <unistd.h>
 
 int	main(int argc, char **argv)
 {
-	int	fd;
+	t_data	data;
+	t_mlx	mlx;
+	t_img	img;
+	t_map	map;
+//	int		fd;
 	
+	(void)argv;
 	if (argc == 2)
-	{
-		//pon un error si un pelotudo te pasa un .cub a secas
-		if (check_file(argv[1]) == -1)
-			exit(fd_printf(2, "Error\nWrong file!\nOnly .cub please :)\nPS: We don't accept occulted files uwu\n"));
-		if (open_file(argv[1], &fd) == -1)
-			exit(fd_printf(2, "Error\nCouldn't open file :(\n Check if the path is correct and file has read permissions\n"));
-		close(fd);
-	}
-	else
-	{
-		printf("Error\nWrong number of arguments\n");
-		exit(1);
-	}
+		return (fd_printf(2, "Wrong number of arguments\n"), 1);
+//	fd_printf(1, "Estarting CubTresD\n");
+//	if (check_file(argv[1]) == -1)
+//		exit(fd_printf(2, "Error\nWrong file!\nOnly .cub please :)\n"
+//				"PS: We don't accept occulted files uwu\n"));
+//	if (open_file(argv[1], &fd) == -1)
+//		exit(fd_printf(2, "Error\nCouldn't open file :(\n Check if the path"
+//				" is correct and file has read permissions\n"));
+//	close(fd);
+	data_init(&data, &mlx, &img, &map);
+	if (!data.mlx)
+		return (fd_printf(2, "Failed mlx_functions\n"));
+	mlx_put_image_to_window(mlx.ptr, mlx.win, mlx.img->ptr, 0, 0);
+	fd_printf(1, "Finished Cub2d\n");
+	mlx_loop(data.mlx->ptr);
+	return (0);
 }

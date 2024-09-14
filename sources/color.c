@@ -6,11 +6,11 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:04:24 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/28 20:04:23 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:57:14 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/color.h"
+#include "../includes/drawing.h"
 #include <stdio.h>
 
 static int	proportional_trgb(int percentage, int color, int max_color)

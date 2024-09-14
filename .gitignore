@@ -9,5 +9,5 @@ a.out
 *.swp
 *.swo
 test*
-cub3d
+cub3D
 Makefile.gen

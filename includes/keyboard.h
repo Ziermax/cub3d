@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:08:27 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/08/28 18:29:25 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:12:12 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define KEYBOARD_H
 
 # define KEY_ESC 65307
+# define KEY_SHIFT 65505
+# define KEY_TAB 65289
 # define KEY_PLUS 61
 # define KEY_MINUS 45
 # define KEY_A 97

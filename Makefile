@@ -1,8 +1,8 @@
 #<-------------------------------|VARIABLES|---------------------------------->#
 
-NAME = cub3d
+NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 MLXFLAGS = -lXext -lX11 -lm -lz
 
 #<---------------------------------|FILES|------------------------------------>#
@@ -12,7 +12,8 @@ LIBMLX = ./minilibx/libmlx.a
 
 SRC_F = main.c
 #	MAXI FILES
-SRC_F += drawing.c mlx_events.c mlx_image_utils.c mlx_init.c color.c struct_destroy.c casting.c
+SRC_F += struct_destroy.c drawing.c mlx_events.c mlx_image_utils.c \
+	 initainator.c color.c casting.c casting_utils.c mlx_actions.c
 #	CAMILA FILES
 SRC_F += parser.c
 SRC_D = ./sources/
