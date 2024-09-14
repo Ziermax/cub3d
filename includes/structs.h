@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 20:55:27 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/09/13 20:43:58 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/14 17:25:49 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ typedef struct s_map
 	void	*img_south;
 	void	*img_west;
 	void	*img_east;
-	int		width;
-	int		height;
 	int		limits[2];
 	int		ceiling;
 	int		ceiling_low;

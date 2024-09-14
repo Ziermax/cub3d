@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:21:17 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/09/13 20:45:11 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/14 17:25:37 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,8 @@ void	map_init(t_map *map)
 	map->player.y = 2.5f;
 	map->player.ang = (0) * ANG_PRES;
 	map->player.fov = fov_init();
-	map->width = 30;
-	map->height = 20;
-	map->limits[X] = map->width;
-	map->limits[Y] = map->height;
+	map->limits[X] = 30;
+	map->limits[Y] = 20;
 }
 //	map->ceiling = 0xC95200;
 
