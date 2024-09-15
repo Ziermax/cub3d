@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:21:17 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/09/14 17:25:37 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/15 02:22:21 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	*fov_init(void)
 //	while (i * PX_THCKNSS < LENGTH)
 //		printf("Saved angle: %d\n", fov[i++]);
 
-void	map_init(t_map *map)
+void	map_init(t_map *map, t_mlx *mlx)
 {
 	map->layout = maping();
 	if (!map->layout)
@@ -80,6 +80,16 @@ void	map_init(t_map *map)
 	map->player.fov = fov_init();
 	map->limits[X] = 30;
 	map->limits[Y] = 20;
+	map->img_north.ptr = mlx_xpm_file_to_image(mlx->ptr, "texture/eagle.xpm",
+			&map->img_north.width, &map->img_north.height);
+	map->img_north.addr = mlx_get_data_addr(
+			map->img_north.ptr,
+			&map->img_north.bits_per_pixel,
+			&map->img_north.line_length,
+			&map->img_north.endian);
+	map->img_south = map->img_north;
+	map->img_west = map->img_north;
+	map->img_east = map->img_north;
 }
 //	map->ceiling = 0xC95200;
 
@@ -106,7 +116,7 @@ void	data_init(t_data *data, t_mlx *mlx, t_img *img, t_map *map)
 	ft_mlx_init(mlx, img);
 	if (!mlx->img)
 		return ;
-	map_init(map);
+	map_init(map, mlx);
 	if (!map->layout)
 		return ;
 	data->mlx = mlx;

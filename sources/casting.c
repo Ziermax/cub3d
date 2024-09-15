@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 16:27:09 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/09/13 18:02:52 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/15 02:20:53 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,19 @@ static t_column	intersection_column_y(t_eline line, int *range, char **map)
 //			column.map[X], column.map[Y], column.point[X], column.point[Y],
 //			column.distance, column.height);
 
-static void	*get_sprite(int *map, float *point)
+static t_img	get_sprite(int *coordinates, float *point, t_map *map)
 {
-	if (map[X] == (int)point[X])
+	if (coordinates[X] == point[X])
+		return (map->img_west);
+	if ((coordinates[X] + 1) == point[X])
+		return (map->img_east);
+	if (coordinates[Y] == point[Y])
+		return (map->img_south);
+	if ((coordinates[Y] + 1) == point[Y])
+		return (map->img_north);
+	return (map->img_south);
+}
+/*	if ((float)map[X] == point[X])
 	{
 		if (map[Y] == (int)point[Y])
 			return ((void *)1);
@@ -91,8 +101,7 @@ static void	*get_sprite(int *map, float *point)
 	}
 	if (map[Y] == (int)point[Y])
 		return ((void *)3);
-	return ((void *)4);
-}
+	return ((void *)4);*/
 
 t_column	distance_to_wall(t_map *map, int angle)
 {
@@ -110,7 +119,7 @@ t_column	distance_to_wall(t_map *map, int angle)
 		aux = column[Y];
 	aux.distance = distance_to_screen(aux.distance, angle, map->player.ang);
 	aux.height = height_by_distance(aux.distance);
-	aux.sprite = get_sprite(aux.map, aux.point);
+	aux.sprite = get_sprite(aux.map, aux.point, map);
 	return (aux);
 }
 	//printf("line equation (%.3f, %.3f) ang: %d\n | "

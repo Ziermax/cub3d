@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:54:45 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/09/13 18:00:25 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/15 02:19:46 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,57 @@ void	draw_pixel(int x, int y, int color, t_mlx *mlx)
 	}
 }
 
-void	draw_column(int x, int heigth, int color, t_mlx *mlx)
+int	get_x_from_column(t_column column, t_img sprite)
 {
-	int	column;
-	int	half_screen;
+	float	proportion;
+	int		x;
 
-	if (heigth <= 0 || x < 0 || x * PX_THCKNSS > LENGTH + PX_THCKNSS)
+	if (column.point[X] == (float)column.map[X]
+		|| column.point[X] == (float)(column.map[X] + 1))
+		proportion = column.point[Y] - column.map[Y];
+	else
+		proportion = column.point[X] - column.map[X];
+	x = proportion * sprite.width;
+	return (x);
+}
+
+int	get_color_from_column(t_column column, t_img sprite, int base)
+{
+	int	color;
+	int	full_height;
+	int	y;
+
+	full_height = 2 * column.height;
+	y = (float)(column.height - base) / full_height * sprite.height;
+	color = my_mlx_get_pixel_color(&sprite, column.x, y);
+	return (color);
+}
+
+void	draw_column(t_column column, t_mlx *mlx)
+{
+	int	x;
+	int	base;
+	int	color;
+	int	half_screen;
+	int	stop_height;
+
+	x = column.x;
+	column.x = get_x_from_column(column, column.sprite);
+	if (column.height <= 0 || x < 0 || x * PX_THCKNSS > LENGTH + PX_THCKNSS)
 		return ;
 	half_screen = HEIGTH / PX_THCKNSS / 2;
-	if ((long)heigth * 2 * PX_THCKNSS > (long)HEIGTH + PX_THCKNSS)
-		heigth = HEIGTH / PX_THCKNSS / 2 + 2;
+	stop_height = column.height;
+	if ((long)column.height * 2 * PX_THCKNSS > (long)HEIGTH + PX_THCKNSS)
+		stop_height = HEIGTH / PX_THCKNSS / 2 + 2;
+	color = get_color_from_column(column, column.sprite, 0);
 	draw_pixel(x, half_screen, color, mlx);
-	column = 1;
-	while (column < heigth)
+	base = 1;
+	while (base < stop_height)
 	{
-		draw_pixel(x, half_screen + column, color, mlx);
-		draw_pixel(x, half_screen - column, color, mlx);
-		column++;
+		color = get_color_from_column(column, column.sprite, base);
+		draw_pixel(x, half_screen + base, color, mlx);
+		color = get_color_from_column(column, column.sprite, -base);
+		draw_pixel(x, half_screen - base, color, mlx);
+		base++;
 	}
 }

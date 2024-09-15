@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 20:55:27 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/09/14 17:25:49 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/15 02:25:11 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,24 @@
 # define HEIGTH 1080
 # define X 0
 # define Y 1
-# define PX_THCKNSS 1
+# define PX_THCKNSS 4
 # define FOV_V 60
 # define FOV 50
 # define ANG_PRES 1000
 
 // Y = m * X + n
 // Y = slope * X + intercept;
+
+typedef struct s_img
+{
+	void	*ptr;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
 
 typedef struct s_plyer
 {
@@ -39,10 +50,10 @@ typedef struct s_plyer
 typedef struct s_map
 {
 	char	**layout;
-	void	*img_north;
-	void	*img_south;
-	void	*img_west;
-	void	*img_east;
+	t_img	img_north;
+	t_img	img_south;
+	t_img	img_west;
+	t_img	img_east;
 	int		limits[2];
 	int		ceiling;
 	int		ceiling_low;
@@ -50,15 +61,6 @@ typedef struct s_map
 	int		floor_low;
 	t_plyer	player;
 }	t_map;
-
-typedef struct s_img
-{
-	void	*ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_img;
 
 typedef struct s_mlx
 {
@@ -99,7 +101,7 @@ typedef struct s_column
 	int		map[2];
 	int		x;
 	int		height;
-	void	*sprite;
+	t_img	sprite;
 }	t_column;
 
 void	delete_map(void *map);

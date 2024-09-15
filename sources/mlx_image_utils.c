@@ -6,7 +6,7 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:09:29 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/09/13 18:03:01 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/15 01:45:00 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+int	my_mlx_get_pixel_color(t_img *img, int x, int y)
+{
+	char	*dst;
+
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	return (*(int *)dst);
 }
 
 void	split_image(t_mlx *mlx, t_map *map)
@@ -60,7 +68,8 @@ int	render_image(t_data *data)
 	while (i * PX_THCKNSS < LENGTH)
 	{
 		column = distance_to_wall(map, map->player.fov[i] + map->player.ang);
-		draw_column(i++, column.height, 0xff9f5d, mlx);
+		column.x = i++;
+		draw_column(column, mlx);
 	}
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img->ptr, 0, 0);
 	return (0);

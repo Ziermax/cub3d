@@ -6,12 +6,12 @@
 /*   By: mvelazqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:12:05 by mvelazqu          #+#    #+#             */
-/*   Updated: 2024/09/14 18:16:47 by mvelazqu         ###   ########.fr       */
+/*   Updated: 2024/09/15 02:23:20 by mvelazqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <unistd.h>
-# include <fcntl.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include "../Libft/includes/libft.h"
 
 int	open_file(char *argv, int *fd)
@@ -24,7 +24,6 @@ int	open_file(char *argv, int *fd)
 
 int	file_is_ocult(char *argv)
 {
-	//int		i;
 	char	*checker;
 
 	checker = ft_strrchr(argv, '/');
