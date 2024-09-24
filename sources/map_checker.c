@@ -105,10 +105,14 @@ int parse_map(int fd, t_map *map) {
                 map->player.x = i;
                 map->player.y = index;
                 //Si encontramos el jugador, le pegamos la orientación
-                if (layout[index][i] == 'N') map->player.ang = 90;
-                else if (layout[index][i] == 'S') map->player.ang = 270;
-                else if (layout[index][i] == 'W') map->player.ang = 180;
-                else if (layout[index][i] == 'E') map->player.ang = 0;
+                if (layout[index][i] == 'N')
+                    map->player.ang = 90 * ANG_PRESS;
+                else if (layout[index][i] == 'S')
+                    map->player.ang = 270 * ANG_PRESS;
+                else if (layout[index][i] == 'W')
+                    map->player.ang = 180 * ANG_PRESS;
+                else if (layout[index][i] == 'E')
+                    map->player.ang = 0 * ANG_PRESS;
             }
             i++;
         }
