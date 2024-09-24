@@ -68,29 +68,28 @@ int parse_map(int fd, t_map *map) {
     line = get_next_line(fd);
     while (line)
     {
-        
         if (ft_strlen(line) == 0 && map_ended == 0)
         {
             free(line);  // skip empty lines
             line = get_next_line(fd);
             continue;
         }
-        if (ft_strlen(line) == 0 && map_ended == 1)
+        if (ft_strlen(line) == 0 && map_ended == 1) //revisar este error
         {
             printf("Error: Map is not closed.\n");
             return -1;
         }
-        layout[index] = line;
-
+        layout = (char **)add_dir((void *)layout, (void *)line);
+        index = ft_arraylen((void *)layout) - 1;
         // miramos la posición del jugador
         int i = 0;
         while (layout[index][i])
         {
-            if (strchr("NSWE", layout[index][i]))
+            if (ft_strchr("NSWE", layout[index][i]))
             {
                 if (player_found) // si ya teniamos un jugador
                 {
-                    fd_printf(2, "Error: Multiple player starting positions found.\n");
+                    fd_printf(2, "Error\n Multiple player starting positions found.\n");
                     return (-1);
                 }
                 player_found = 1;
@@ -112,5 +111,5 @@ int parse_map(int fd, t_map *map) {
         index++;
         line = get_next_line(fd);
     }
-    layout[index] = NULL;
+    return (0);
 }
